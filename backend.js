@@ -31,7 +31,7 @@ app.get("/add", function (req, res) {
         "INSERT INTO tareas(id, tarea, prioridad, estado) VALUES(?,?,?,?)",
         [1, req.query.tarea, req.query.prioridad, estado],
         function (err) {
-          console.log("Tarea registrada!");
+          console.log("Tarea registrada con exito!...");
           res.sendFile(path.join(__dirname, "./public/index.html"));
           db.run(
             "Update tareas SET id=x.rn from (SELECT tarea, row_number() over (partition by 1 order by prioridad) rn from tareas) x where tareas.tarea=x.tarea"
@@ -69,7 +69,7 @@ app.get("/delete", function (req, res) {
         "DELETE FROM tareas WHERE id = ?",
         [req.query.id],
         function (err, row) {
-          console.log("eliminacion ok !");
+          console.log("Tarea eliminada con exito!...");
           res.sendFile(path.join(__dirname, "./public/index.html"));
         }
       );
@@ -100,7 +100,7 @@ app.get("/update", function (req, res) {
         "UPDATE tareas SET tarea = ?, prioridad = ?, estado = ? WHERE id = ?",
         [req.query.tarea, req.query.prioridad, req.query.estado, req.query.id],
         function (err, row) {
-          console.log("Actualizacion exitosa!");
+          console.log("Actualizacion exitosa!...");
           res.sendFile(path.join(__dirname, "./public/index.html"));
         }
       );

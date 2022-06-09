@@ -1,3 +1,6 @@
 body {
-    background-color: black;
+    min-height: 100vh;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(45deg,rgb(3, 3, 10) , rgba(253,236,45,1), rgb(3, 3, 10));
 }
